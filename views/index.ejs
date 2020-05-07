@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Sample nodejs</title>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <h2>Add/Edit User</h2>
+
+        <form action="/save" method="POST">
+            <input type="text" placeholder="User name" name="userName" required/>
+            <input type="password" placeholder="Password" name="password" />
+            <input type="text" placeholder="Last name" name="lastName" />
+            <input type="text" placeholder="First name" name="firstName" />
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+
+    <section>
+        <h2>Delete User</h2>
+
+        <form action="/delete" method="POST">
+            <input type="text" placeholder="User name" name="userName" required/>
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+
+    <section>
+        <h2>List users</h2>
+
+        <table>
+            <tr>
+                <td>ID</td>
+                <td>User name</td>
+                <td>Password</td>
+                <td>Full name</td>
+            <tr>
+                <% users.forEach(user => {%>
+            <tr>
+                <th><%= user._id %></th>
+                <th><%= user.userName %></th>
+                <th><%= user.password %></th>
+                <th><%= user.lastName + ' ' + user.firstName %></th>
+            </tr>
+            <% }) %>
+        </table>
+    </section>
+</body>
+
+</html>
